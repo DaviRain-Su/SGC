@@ -1,4 +1,6 @@
-# Sgc Network
+# Substrate Node Template
+
+A new FRAME-based Substrate node, ready for hacking :rocket:
 
 ## Local Development
 
@@ -35,13 +37,13 @@ cargo build --release
 Purge any existing dev chain state:
 
 ```bash
-./target/release/sgc purge-chain --dev
+./target/release/node-template purge-chain --dev
 ```
 
 Start a dev chain:
 
 ```bash
-./target/release/sgc --dev
+./target/release/node-template --dev
 ```
 
 Or, start a dev chain with detailed logging:
@@ -134,7 +136,7 @@ After the node has been [built](#build), refer to the embedded documentation to 
 capabilities and configuration parameters that it exposes:
 
 ```shell
-./target/release/sgc --help
+./target/release/node-template --help
 ```
 
 ### Runtime
@@ -197,7 +199,7 @@ git checkout <branch/tag/sha1>
 # Run the helper script to generate a node template. This script compiles Substrate, so it will take
 # a while to complete. It expects a single parameter: the location for the script's output expressed
 # as a relative path.
-.maintain/sgc-release.sh ../sgc.tar.gz
+.maintain/node-template-release.sh ../node-template.tar.gz
 ```
 
 Custom node templates are not supported. Please use a recently tagged version of the
