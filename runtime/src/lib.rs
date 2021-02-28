@@ -138,7 +138,6 @@ const NORMAL_DISPATCH_RATIO: Perbill = Perbill::from_percent(75);
 const MAXIMUM_BLOCK_WEIGHT: Weight = 2 * WEIGHT_PER_SECOND;
 
 use frame_system::{
-	EnsureRoot, EnsureOneOf,
 	limits::{BlockWeights, BlockLength}
 };
 
