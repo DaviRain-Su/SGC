@@ -286,10 +286,7 @@ impl pallet_sudo::Config for Runtime {
 	type Call = Call;
 }
 
-/// Configure the pallet template in pallets/template.
-impl template::Config for Runtime {
-	type Event = Event;
-}
+
 
 pub mod currency {
 	// use node_primitives::Balance;
@@ -352,6 +349,20 @@ impl pallet_contracts::Config for Runtime {
 	type MaxCodeSize = MaxCodeSize;
 }
 
+/// Configure the pallet template in pallets/template.
+impl erc20::Config for Runtime {
+	type Event = Event;
+	type Balance = Balance;
+}
+
+impl erc20_extersion::Config for Runtime {
+	type Randomness = RandomnessCollectiveFlip;
+}
+
+impl template::Config for Runtime {
+	type Event = Event;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -371,7 +382,6 @@ construct_runtime!(
 		// Include the custom logic from the template pallet in the runtime.
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
 		Erc20: erc20::{Module, Call, Storage, Event<T>},
-		Erc20Extersion: erc20_extersion::{Module, Call, Storage, Event<T>},
 	}
 );
 

@@ -3874,7 +3874,6 @@ dependencies = [
  "frame-system",
  "funty",
  "pallet-contracts",
- "pallet-randomness-collective-flip",
  "parity-scale-codec",
  "serde",
  "sp-core",
