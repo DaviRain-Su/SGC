@@ -51,6 +51,8 @@ pallet-contracts-primitives = { version = "3.0.0", default-features = false , gi
 pallet-contracts-rpc-runtime-api = { version = "3.0.0", default-features = false, git = "https://github.com/paritytech/substrate.git", rev = "ec498bb"}
 
 template = { version = "2.0.0", default-features = false, path = "../pallets/template", package = "pallet-template" }
+erc20 = { version = "2.0.0", default-features = false, path = "../pallets/erc20", package = "pallet-erc20" }
+erc20-extersion = { version = "2.0.0", default-features = false, path = "../pallets/erc20/erc20-extersion", package = "pallet-erc20-extersion" }
 
 [build-dependencies]
 substrate-wasm-builder = { version = "4.0.0" }
@@ -84,9 +86,11 @@ std = [
 	"frame-system/std",
 	"frame-system-rpc-runtime-api/std",
 	"template/std",
-	'pallet-contracts/std',
-	'pallet-contracts-primitives/std',
-	'pallet-contracts-rpc-runtime-api/std',
+	"pallet-contracts/std",
+	"pallet-contracts-primitives/std",
+	"pallet-contracts-rpc-runtime-api/std",
+	"erc20/std",
+	"erc20-extersion/std",
 ]
 runtime-benchmarks = [
 	"sp-runtime/runtime-benchmarks",

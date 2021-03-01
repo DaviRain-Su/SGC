@@ -346,11 +346,10 @@ impl pallet_contracts::Config for Runtime {
 	type MaxValueSize = MaxValueSize;
 	type WeightPrice = pallet_transaction_payment::Module<Self>;
 	type WeightInfo = pallet_contracts::weights::SubstrateWeight<Self>;
-	type ChainExtension = ();
+	type ChainExtension = erc20_extersion::FetchRandomExtension; // update chain extersion
 	type DeletionQueueDepth = DeletionQueueDepth;
 	type DeletionWeightLimit = DeletionWeightLimit;
 	type MaxCodeSize = MaxCodeSize;
-
 }
 
 // Create the runtime by composing the FRAME pallets that were previously configured.
@@ -371,6 +370,8 @@ construct_runtime!(
 		Contracts: pallet_contracts::{Module, Call, Config<T>, Storage, Event<T>},
 		// Include the custom logic from the template pallet in the runtime.
 		TemplateModule: template::{Module, Call, Storage, Event<T>},
+		Erc20: erc20::{Module, Call, Storage, Event<T>},
+		Erc20Extersion: erc20_extersion::{Module, Call, Storage, Event<T>},
 	}
 );
 
