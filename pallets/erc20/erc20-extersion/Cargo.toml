@@ -20,7 +20,9 @@ frame-benchmarking = {default-features = false, version = "3.0.0", optional = tr
 sp-std = {default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git", rev = "ec498bb" }
 sp-runtime = {default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git", rev = "ec498bb" }
 pallet-contracts = {default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git", rev = "ec498bb" }
-#pallet-randomness-collective-flip = {default-features = false, version = "3.0.0", git = "https://github.com/paritytech/substrate.git", rev = "ec498bb" }
+
+# add local pallet
+pallet-erc20 = {default-features = false, path = "../../erc20"}
 
 funty = { version = "=1.1.0", default-features = false } 
 [dev-dependencies]
@@ -37,6 +39,7 @@ std = [
 	'frame-support/std',
 	'frame-system/std',
 	'frame-benchmarking/std',
-	'sp-std/std'
+	'sp-std/std',
+	'pallet-erc20/std'
 ]
 runtime-benchmarks = ["frame-benchmarking"]

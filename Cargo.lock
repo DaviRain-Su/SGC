@@ -3874,6 +3874,7 @@ dependencies = [
  "frame-system",
  "funty",
  "pallet-contracts",
+ "pallet-erc20",
  "parity-scale-codec",
  "serde",
  "sp-core",
