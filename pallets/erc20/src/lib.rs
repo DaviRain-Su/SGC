@@ -172,8 +172,8 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
-	pub fn total_supply() -> <T as pallet::Config>::Balance {
-		debug::info!("erc20 total supply of!");
+	pub fn total_supply() -> T::Balance {
+		debug::info!("erc20 tostal supply of!");
 
 		// Self::total_supply_by()
 		TotalSupply::<T>::get().unwrap()
