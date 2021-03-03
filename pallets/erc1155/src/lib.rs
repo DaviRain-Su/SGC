@@ -172,6 +172,7 @@ pub struct Token<
 }
 
 impl<T: Config> Pallet<T> {
+	// function id 1001, implement func is do_set_approval_for_all(T::AccountId, T::AccountId, bool);
 	pub fn do_set_approval_for_all(
 		owner: &T::AccountId,
 		operator: &T::AccountId,
@@ -187,6 +188,7 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	// function id 1002, implement func is do_mint(T::AccountId, T::TokenId, T::TokenBalance);
 	pub fn do_mint(
 		to: &T::AccountId,
 		id: &T::TokenId,
@@ -204,6 +206,7 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	// function id 1003, implement func is do_batch_mint(T::AccountId, Vec<T::TokenId>, Vec<T::TokenBalance>)
 	pub fn do_batch_mint(
 		to: &T::AccountId,
 		ids: &Vec<T::TokenId>,
@@ -229,6 +232,7 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	// function id 1004, implement function is do_burn(T::AccountId, T::TokenId, T::TokenBalance)
 	pub fn do_burn(
 		from: &T::AccountId,
 		id: &T::TokenId,
@@ -246,6 +250,7 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	// function id 1005, implement function is do_batch_burn(T::AccountId, Vec<T::TokenId>, Vec<T::TokenBalance>)
 	pub fn do_batch_burn(
 		from: &T::AccountId,
 		ids: &Vec<T::TokenId>,
@@ -271,6 +276,7 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	// function id 1006, implement function is transfer_from(T::AccountId, T::AccountId, T::TokenId, T::TokenBalance)
 	pub fn do_transfer_from(
 		from: &T::AccountId,
 		to: &T::AccountId,
@@ -303,6 +309,7 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	// function id 1007, implement function is do_batch_transfer_from(T::AccountId, T::AccountId, Vec<T::TokenId>, Vec<T::TokenBalance>)
 	pub fn do_batch_transfer_from(
 		from: &T::AccountId,
 		to: &T::AccountId,
@@ -340,20 +347,24 @@ impl<T: Config> Pallet<T> {
 		Ok(())
 	}
 
+	// function id 1008, implement function is approved_or_owner(T::AccountId, T::AccountId)
 	pub fn approved_or_owner(who: &T::AccountId, account: &T::AccountId) -> bool {
 		*account != T::AccountId::default()
 			&& (*who == *account || Self::operator_approvals(who, account))
 	}
 
+	// function id 1009, implement function is_nf(T::TokenId)
 	pub fn is_nf(id: &T::TokenId) -> Result<bool, DispatchError> {
 		let token = Tokens::<T>::get(id).ok_or(Error::<T>::InvalidTokenId)?;
 		Ok(token.is_nf)
 	}
 
+	// function id 1010, implement function is_approved_for_all(T::AccountId, T::AccountId)
 	pub fn is_approved_for_all(owner: &T::AccountId, operator: &T::AccountId) -> bool {
 		Self::operator_approvals(owner, operator)
 	}
 
+	// function id 1011, implement function balance_of(T::AccountId, T::TokenId)
 	pub fn balance_of(owner: &T::AccountId, id: &T::TokenId) -> T::TokenBalance {
 		debug::info!("run erc1155: balance_of");
 		debug::info!("owner: {:?}, id: {:?}", owner, id);
@@ -361,6 +372,7 @@ impl<T: Config> Pallet<T> {
 		Self::balances(id, owner)
 	}
 
+	// function id 1012, implement function balance_of_batch(Vec<T::AccountId>, Vec<T::TokenId>)
 	pub fn balance_of_batch(owners: &Vec<T::AccountId>, ids: &Vec<T::TokenId>) -> Result<Vec<T::TokenBalance>, DispatchError> {
 		ensure!(owners.len() == ids.len(), Error::<T>::InvalidArrayLength);
 
