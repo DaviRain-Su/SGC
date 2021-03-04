@@ -44,7 +44,6 @@ pub struct CreateTokenInputParam<AccountId, TaoId, TokenId> {
 	uri: Vec<u8>,
 }
 
-
 // func_id 1004
 // do_set_approval_for_all(
 // 		owner: &T::AccountId,
@@ -57,7 +56,6 @@ pub struct SetApprovalForAllInputParam<AccountId> {
 	operator: AccountId,
 	approved: bool,
 }
-
 
 // func_id 1005
 // do_mint(
@@ -74,8 +72,6 @@ pub struct MintInputParam<AccountId, TaoId, TokenId, Balance> {
 	amount: Balance,
 }
 
-
-
 // func_id 1006
 // do_batch_mint(
 // 		to: &T::AccountId,
@@ -90,7 +86,6 @@ pub struct BatchMintInputParam<AccountId, TaoId, TokenId, Balance> {
 	token_ids: Vec<TokenId>,
 	amounts: Vec<Balance>,
 }
-
 
 // func_id 1007
 // do_burn(
@@ -188,7 +183,6 @@ pub struct BalanceOfBatchInputParam<AccountId, TaoId, TokenId> {
 	tao_id: TaoId,
 	token_ids: Vec<TokenId>,
 }
-
 
 /// chain extension of contract
 pub struct SgcChainExtension;
@@ -373,14 +367,12 @@ impl<C: Config> ChainExtension<C> for SgcChainExtension {
 
 			}
 			1007 => {
-
 				// do_burn(
 				// 		from: &T::AccountId,
 				// 		tao_id: T::TaoId,
 				// 		token_id: T::TokenId,
 				// 		amount: Balance
 				// 	)
-
 				log::info!("run 1007");
 				let mut env = env.buf_in_buf_out();
 				let caller = env.ext().caller().clone();
@@ -571,7 +563,7 @@ impl<C: Config> ChainExtension<C> for SgcChainExtension {
 			}
 			1013 => {
 				// fn balance_of(owner: &T::AccountId, tao_id: T::TaoId, token_id: T::TokenId) -> Balance
-				log::info!("run 1011");
+				log::info!("run 1013");
 				let mut env = env.buf_in_buf_out();
 				let caller = env.ext().caller().clone();
 				log::info!("caller: {:?}", caller);
@@ -602,7 +594,7 @@ impl<C: Config> ChainExtension<C> for SgcChainExtension {
 			}
 			1014 => {
 				// balance_of_batch(owners: &Vec<T::AccountId>, tao_id: T::TaoId, token_ids: Vec<T::TokenId>) -> Result<Vec<Balance>, DispatchError>
-				log::info!("run 1011");
+				log::info!("run 1014");
 				let mut env = env.buf_in_buf_out();
 				let caller = env.ext().caller().clone();
 				log::info!("caller: {:?}", caller);
