@@ -1,8 +1,15 @@
 # Request an environment that provides sudo (that goes with larger containers)
 # and a minimal language environment.
 sudo: true
-language: minimal
-
+language: rust
+rust:
+  - stable
+  - beta
+  - nightly
+matrix:
+  allow_failures:
+    - rust: nightly
+  fast_finish: true
 cache: cargo
 
 branches:
